@@ -15,6 +15,9 @@ div.main{
   height: 90%;
   box-shadow: 10px 10px 30px black;
 }
+div.main:hover{
+  box-shadow: 15px 15px 25px black;
+}
 
 div.Welcome-banner{
   width: 100%;
@@ -55,9 +58,6 @@ form{
 form input[type="submit"]{
   margin-top: 5px;
 }
-form input[type="text"]{
-  box-shadow: 1px 1px;
-}
-form input[type="password"]{
-  box-shadow: 1px 1px;
+form input:hover{
+  box-shadow: 2px 2px 3px #FF8F00;
 }
