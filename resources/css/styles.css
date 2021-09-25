@@ -32,7 +32,7 @@ div.Welcome-banner{
   margin-right: 1%;
 }
 
-#Welcome img{
+#Welcome > img{
   width: 150px;
   float: left;
   margin-left: 1%;
@@ -47,7 +47,7 @@ div.login{
   text-align: center;
 }
 
-div.login h2{
+a ~ h2{
   margin-top: 1%;
   margin-bottom: 1%;
 }
@@ -55,9 +55,9 @@ div.login h2{
 form{
   margin-bottom: 10%;
 }
-form input[type="submit"]{
+form > input[type="submit"]{
   margin-top: 5px;
 }
-form input:hover{
+form > input:hover{
   box-shadow: 2px 2px 3px #FF8F00;
 }
