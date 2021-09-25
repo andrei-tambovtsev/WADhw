@@ -14,6 +14,10 @@ div.main{
   width: 33%;
   height: 90%;
   box-shadow: 10px 10px 30px black;
+  display flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 div.main:hover{
   box-shadow: 15px 15px 25px black;
@@ -23,20 +27,22 @@ div.Welcome-banner{
   width: 100%;
   margin-top: 1%;
   height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #Welcome{
+  margin-left:5px;
   text-align: center;
   font-weight: bold;
-  font-size: 38px;
-  margin-right: 1%;
+  font-size: 30px;
 }
 
-#Welcome > img{
-  width: 150px;
-  float: left;
-  margin-left: 1%;
-  margin-top: -10%;
+div.Welcome-banner img{
+  margin-left: -1%;
+  width: 125px;
 }
 
 div.login{
@@ -45,6 +51,10 @@ div.login{
   margin-right: 25%;
   margin-bottom: 10%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 a ~ h2{
