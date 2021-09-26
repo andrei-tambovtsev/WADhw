@@ -2,7 +2,7 @@ Use flexbox to arrange the layout - both pages
 Use an ID selector - Welcome / in login !DONE
 Use at least 2 different class selectors - already a lot of classes as div elements !DONE
 Use a pseudo-element or pseudo-class - like button :hover / in index !DONE
-Use a Descendant Selector (e.g., div p) - pictures inside post div / in index
+Use a Descendant Selector (e.g., div p) - pictures inside post div / in index !DONE
 Use a Child Selector (e.g., div > p) - text inside the post / in index !DONE
-Use an Adjacent Sibling Selector (e.g., div + p) - first post / in index
+Use an Adjacent Sibling Selector (e.g., div + p) - first post / in index !DONE
 Use a General Sibling Selector (e.g., div ~ p) - "Or" and "Please Log In" after <a> / in login !DONE
