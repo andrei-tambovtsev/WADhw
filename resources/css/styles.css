@@ -4,7 +4,7 @@
 html, body {
 margin: 0;
 padding: 0;
-background-color: #494949; 
+background-color: #494949;
 }
 
 /*login.html*/
@@ -62,7 +62,7 @@ div.login{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 a ~ h2{
@@ -105,7 +105,7 @@ div.searching_line{
     max-height: 80%;
   }
 
-  
+
   #searching_input{
     margin-top: 15px;
     height: 50%;
@@ -124,7 +124,7 @@ div.searching_line{
     font-size: 17px;
     background-color: #FFCC00 ;
     height: 100%;
-    
+
   }
 
   #searching_input > form > input[type="text"] {
@@ -138,11 +138,11 @@ div.searching_line{
     display: flex;
     flex-direction: column;
   }
-  
+
   div.background_line > h1 {
     margin-left: 20%;
     color: #FFCC00;
-    background-color: black;   
+    background-color: black;
   }
 
   div.blog_post{
@@ -164,7 +164,7 @@ div.searching_line{
     flex-direction: row;
     justify-content:  space-between;
     align-items: center;
-  
+
   }
 
   div.blog_info > img {
@@ -208,7 +208,7 @@ div.searching_line{
   }
 
   footer > div{
-    
+
     padding:50px;
     background-color: #494949;
     text-align: center;
