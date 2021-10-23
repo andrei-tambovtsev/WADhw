@@ -1,7 +1,7 @@
 1. 10 JSON objects
 2. validation of JSON
-3. Online storage https://www.npoint.io/docs/11f5f6db3c0134b392c2
+3. Online storage https://www.npoint.io/docs/11f5f6db3c0134b392c2 DONE!
 4. Code
 5. comment out previous code, let new code generate posts
 6. some solution for photos
-7. Drop down menu
+7. Drop down menu DONE!

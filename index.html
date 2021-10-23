@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
- <link rel="icon" href="resources/img/post-it.png">
  <title>PostIt</title>
+
+ <link rel="icon" href="resources/img/post-it.png">
  <link rel="stylesheet" href="resources/css/styles.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript" src="resources/js/script.js"></script>
+
 </head>
 
 <body style="background-color: #FFCC00;">
@@ -17,8 +21,19 @@
         <input type="submit" value="Search">
       </form>
     </span>
-    
-    <img src="resources/img/account.png" alt="account">
+
+    <img id="account" src="resources/img/account.png" alt="account">
+  </div>
+
+  <div id="dropdown" >
+    <div id="dropdownTags">
+      <p>User: </p>
+      <p>e-mail: </p>
+    </div>
+    <div id="dropdownInfo">
+      <p>John Snow</p>
+      <p>nors.king@not.dead<p>
+    </div>
   </div>
 
   <div class="background_line" >
@@ -47,8 +62,8 @@
         <span> Sept 24, 2021 18.16</span>
       </div>
       <div class="blog_text">
-        <p> A programmer puts two glasses on the 
-          bedside table before going to sleep. 
+        <p> A programmer puts two glasses on the
+          bedside table before going to sleep.
           <br> A full one, in case he gets
           thirsty, and an empty one, in case he doesn't.</p>
       </div>
