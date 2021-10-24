@@ -65,6 +65,10 @@ div.login{
 
 }
 
+img{
+  color: #FFCC00;
+}
+
 a ~ h2{
   margin-top: 1%;
   margin-bottom: 1%;
