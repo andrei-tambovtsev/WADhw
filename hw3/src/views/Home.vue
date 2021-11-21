@@ -1,12 +1,10 @@
 <template>
   <div class="products">
-    <h2>Our Products page</h2>
-    <h3>Страница для 3его практоса по вью</h3>
+    <h2>Posts:</h2>
 
     <!-- <product_compo_1> </product_compo_1> -->
 
-    <button v-on:click="IncreasePrice">Increase price</button>
-    <button v-on:click="DecreasePrice">Decrease price</button>
+    <button v-on:click="IncreasePrice">RESET LIKES</button>
 
     <allposts> </allposts>
   </div>
@@ -18,7 +16,7 @@
 import allposts from "@/components/AllPosts.vue";
 
 export default {
-  name: "Products",
+  name: "Home",
   methods: {
     IncreasePrice: function () {
       this.$store.commit("IncreasePrice");

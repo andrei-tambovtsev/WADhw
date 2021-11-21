@@ -1,13 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{ name: 'contacts' }"> Contacts </router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <HeaderComponent msg="Welcome to our website"></HeaderComponent>
     <router-view />
+    <FooterComponent msg="Contact us!"></FooterComponent>
   </div>
 </template>
+
+<script>
+  import HeaderComponent from "@/components/HeaderComponent.vue";
+  import FooterComponent from "@/components/FooterComponent.vue";
+
+  export default {
+  name: "app",
+  methods: {
+    IncreasePrice: function () {
+      this.$store.commit("IncreasePrice");
+    },
+    DecreasePrice: function () {
+      this.$store.commit("DecreasePrice");
+    },
+  },
+  components: { HeaderComponent, FooterComponent },
+  /* props: ["productList"], */ /* Не нужная строчка?"!" */ /* Я закоментил и стало работать, хотя в практосе этого сделать не написано. А ПОТОМ ПОМЕНЯЛ НАЗВАНИЕ НА productLIST(а было productList), разкоментил, и всё стало работать. Это видимо убрало конфуз?? И всё до сих пор работатет без этой строчки */
+  data() {
+    return {};
+  },
+};
+</script>
+
 
 <style lang="scss">
 #app {
@@ -16,18 +36,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  background-color: #FFCC00
 }
 </style>
