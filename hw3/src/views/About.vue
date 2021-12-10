@@ -8,7 +8,7 @@
       It was pretty exhausing, but...fun?&#129320;</p>
       <p> The hardest part was to figure out how to put everything we knew earlier to work with vue. <br>
         For example if I want to make a variable - where should I put it? <br>
-        In data? In store? And how to access it from other files?
+        In data? In store? And how to access it from other files? <br>
       </p>
       Pretty confusing. Need to practise more. <br>
       And we started to forget a little bit what we knew before.
@@ -18,3 +18,15 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+div.about{
+  text-align: center;
+  
+  
+}
+div.about div{
+  font-family:sans-serif;
+  font-weight: bold;
+}
+</style>

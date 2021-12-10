@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title><%= the_title %></title>
+
+ <link rel="icon" href="/img/post-it.png">
+ <link rel="stylesheet" href="/styles.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript" src="/script.js"></script>
+
+</head>
+
+<body style="background-color: #FFCC00;">
+
+  <%- include('./partials/header.ejs') %>
+
+
+  <div class="background_line">
+    <h1 id=header>MY POSTS:</h1>
+
+    <div class="posts list" >
+      <!-- <h2>All posts:</h2> -->
+
+      <% if (pOsts.length > 0) { %>       <!-- Если постов в папке app.js больше нуля....  -->
+          <% pOsts.forEach(posT => { %>   <!--....то создаются хтмл элементы для каждого поста  -->
+            
+            <div class="blog_post">
+              <div class="blog_info">
+                <img src="/img/account.png" alt="account">
+                <span>
+                  <%= posT.timeStamp %>
+                </span>
+              </div>
+
+              <a href="/singlepost">
+                <div class="blog_picture">
+                  <img src="<%= posT.pic %>" alt="<%= posT.inCaseNoPicText %>">
+                </div>
+              </a>
+             
+              <div class="blog_text">
+                <p>
+                  <%= posT.text%>
+                </p>
+              </div>
+              <script>
+                var clicked = false;
+                function plusLike(){
+                  if(!clicked) {
+                    console.log("Like button is pressed");  
+                    clicked = true;
+                    alert("Something is done!");
+                  }
+                  
+                  
+                }
+              </script>
+              <button class="like" id="likeS" onclick="plusLike()">
+                <img src="/img/thumb-up.png" alt="like">
+              </button>
+              <span class="likes"> Likes: <%= posT.likes %> </span>
+            </div>
+              <% }) %>
+                  <% } else { %>
+                      <p>You did not post anything...</p>
+                      <% } %>
+    </div>
+  </div>
+  <%- include('./partials/footer.ejs') %> 
+</body>
+</html>

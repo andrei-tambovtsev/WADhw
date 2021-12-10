@@ -12,16 +12,7 @@
 
   export default {
   name: "app",
-  methods: {
-    IncreasePrice: function () {
-      this.$store.commit("IncreasePrice");
-    },
-    DecreasePrice: function () {
-      this.$store.commit("DecreasePrice");
-    },
-  },
   components: { HeaderComponent, FooterComponent },
-  /* props: ["productList"], */ /* Не нужная строчка?"!" */ /* Я закоментил и стало работать, хотя в практосе этого сделать не написано. А ПОТОМ ПОМЕНЯЛ НАЗВАНИЕ НА productLIST(а было productList), разкоментил, и всё стало работать. Это видимо убрало конфуз?? И всё до сих пор работатет без этой строчки */
   data() {
     return {};
   },
@@ -31,11 +22,11 @@
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Impact;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+  color: #000000;
   background-color: #FFCC00
 }
 </style>

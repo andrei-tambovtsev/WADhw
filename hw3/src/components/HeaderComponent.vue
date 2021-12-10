@@ -1,9 +1,12 @@
 <template>
     <div id="nav">
         <h1>{{ msg }}</h1>
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{ name: 'contacts' }"> Contacts </router-link> |
-      <router-link to="/about">About</router-link>
+        <p>
+          <router-link to="/">Home</router-link> |
+          <router-link :to="{ name: 'contacts' }"> Contacts </router-link> |
+          <router-link to="/about">About</router-link>
+        </p>
+      
     </div>
 </template>
 
@@ -18,15 +21,27 @@ export default {
 
 <style lang="scss">
 #nav {
-  padding: 30px;
+  margin: 0px;              /* Отступ коробки */
+  padding: 10px;
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    color: #494949;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #8208ba;
     }
+  }
+  text-align: center;
+  background-color: black;
+
+  h1{
+    color:#FFCC00;
+    font-size: 40px;
+  }
+  p{
+    /* background-color: #494949; */
+    margin: 0px 500px 0px 500px;
+    font-size: 20px;
   }
 }
 </style>

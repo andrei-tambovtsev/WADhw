@@ -1,10 +1,10 @@
 <template>
   <div class="products">
-    <h2>Posts:</h2>
+    <h2>MY POSTS:</h2>
 
     <!-- <product_compo_1> </product_compo_1> -->
 
-    <button v-on:click="IncreasePrice">RESET LIKES</button>
+    <button v-on:click="resetLikes">RESET LIKES</button>
 
     <allposts> </allposts>
   </div>
@@ -13,22 +13,41 @@
 
 <script>
 /*     import product_compo_1 from "@/components/product_compo_1.vue"; */
-import allposts from "@/components/AllPosts.vue";
+  import allposts from "@/components/AllPosts.vue";
 
-export default {
-  name: "Home",
-  methods: {
-    IncreasePrice: function () {
-      this.$store.commit("IncreasePrice");
+  export default {
+    name: "Home",
+    methods: {
+      resetLikes: function () {
+        this.$store.commit("resetLikes");
+      },
     },
-    DecreasePrice: function () {
-      this.$store.commit("DecreasePrice");
+    components: { allposts },
+    data() {
+      return {};
     },
-  },
-  components: { allposts },
-  /* props: ["productList"], */ /* Не нужная строчка?"!" */ /* Я закоментил и стало работать, хотя в практосе этого сделать не написано. А ПОТОМ ПОМЕНЯЛ НАЗВАНИЕ НА productLIST(а было productList), разкоментил, и всё стало работать. Это видимо убрало конфуз?? И всё до сих пор работатет без этой строчки */
-  data() {
-    return {};
-  },
-};
+  };
 </script>
+
+<style scoped>
+  div.products{
+    background-color: #494949;
+    margin: 0px 250px 0px 250px;
+    padding: 3px 3px 3px 3px;
+  }
+  h2 {
+      text-align: center;
+      font-size: 40px;
+      font-family: sans-serif;
+      color: #FFCC00;;
+      background-color: black;
+      margin: 3% -0.4% 1% 20%;
+      padding: 0% 50% 0% 0%;
+    }
+    button{
+      background-color: black;
+      font-family: sans-serif;
+      color: #FFCC00;;
+      margin: 0% 0% 0% 85%;
+    }
+</style>

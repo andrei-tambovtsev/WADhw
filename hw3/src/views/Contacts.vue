@@ -21,17 +21,22 @@
   </div>
 </template>
 <style scoped>
-div{
-    background-color:black;
-}
-h2{
-    color:rgb(253, 194, 0)
-}
-
-h3{
-    color:#ffdb4b;
-}
-p{
-    color:white;
-}
+    div.Contacts{
+        text-align: center;
+        background-color: #494949;
+        margin: 0px 250px 0px 250px;
+        padding: 3px 3px 3px 3px;
+    }
+    h2 {
+        color:#FFCC00;
+        font-size: 30px;
+    }
+    h3{
+        color:black;
+        /* font-family:sans-serif;
+        font-weight: bold; */
+    }
+    p{
+        color:white;
+    }
 </style>

@@ -17,14 +17,9 @@ export default new Vuex.Store({
       {"pic":"https://cdn.vox-cdn.com/thumbor/o53k-QbKFns_s-OP89E8o34Ho8U=/0x0:599x500/1200x800/filters:focal(286x259:380x353)/cdn.vox-cdn.com/uploads/chorus_image/image/69634799/download__5_.0.jpg","text":"My grades at school were only C's","likes":"0","timeStamp":"Okt 2, 2021 12:12","inCaseNoPicText":"Picture not found :|"}]
   },
   mutations: {
-    IncreasePrice: state => {
+      resetLikes: state => {
       state.POSTSList.forEach(post => {
         post.likes = 0;
-      })
-    },
-    DecreasePrice: state => {
-      state.productList.forEach(product => {
-        product.price -= 1;
       })
     },
   }

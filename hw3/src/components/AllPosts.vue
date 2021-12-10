@@ -4,17 +4,18 @@
                                                                                                     А ещё в ':key' на место 'id' можно поставить вообще ЧТО УГОДНО, главное чтоб было написано ':key="product. ... "' -->
             <div class="blog_info">
                 <img alt="account" src="../assets/account.png" />
-                <span class="timeStamp"> Time: {{post.timeStamp}}</span>
+                <span class="timeStamp"> {{post.timeStamp}}</span>
             </div>
             <div class="blog_picture">
                 
                 <img alt="meme" :src="post.pic" />
             </div>
             <div class="blog_text"><p> {{post.text}} </p></div>
-            <span class="likes">     likes:       {{post.likes}}     </span>
-            <button class="adprice" v-on:click="post.likes++">
+            <button id="adprice" v-on:click="post.likes++">
                 <img alt="like" src="../assets/thumb-up.png" />
             </button>
+            <span class="likes"> Likes: {{post.likes}} </span>
+            
         </div>
     </div>
 </template>
@@ -39,7 +40,7 @@
 
 div.blog_post{
     margin-left: 20%;
-    margin-top: 5%;
+    margin-bottom: 8%;
     width: 60%;
     background-color: #FFCC00;
     box-shadow: 10px 10px 30px black;
@@ -80,23 +81,28 @@ div.blog_info {
   }
 
   div.blog_text p{
-    margin: 2%;
-    font-family: "Impact";
+    margin: 3%;
+    font-family: sans-serif;
+    font-weight: bold;
   }
 
-  button.adprice  {
+  #adprice  {
     background-color: #FFCC00 ;
     margin: 2%;
     width: 50px;
   }
 
-  button.adprice:hover  {
+  #adprice:hover  {
     background-color: #c59e00 ;
   }
 
 
-  button.adprice > img {
+  #adprice > img {
     max-width: 100%;
+  }
+
+  span.likes{
+    font-size: 25px;
   }
 
 
