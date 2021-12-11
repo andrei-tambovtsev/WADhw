@@ -125,6 +125,19 @@ form > input:hover{
 
 /*posts.ejs*/
 
+div.blog_text p{
+  margin: 2%;
+  color: black;
+  font-family: "Impact";
+
+}
+div.blog_text p:hover{
+  margin: 2%;
+  color: black;
+  font-family: "Impact";
+
+}
+
 div.searching_line{
   height: 75px;
   display: flex;
@@ -252,11 +265,6 @@ div.searching_line{
 
   div.blog_picture > img{
     width:  100%;
-  }
-
-  div.blog_text p{
-    margin: 2%;
-    font-family: "Impact";
   }
 
   button.like  {

@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>KEK</title>
@@ -9,9 +10,50 @@
     <script type="text/javascript" src="/script.js"></script>
 
 </head>
+
 <body>
     <%- include('./partials/header.ejs') %>
 
-    <%- include('./partials/footer.ejs') %> 
+        <div class="blog_post">
+            <div class="blog_info">
+                <img src="/img/account.png" alt="account">
+                <span>
+                    <%= post.timeStamp %>
+                </span>
+            </div>
+
+            <% if (post.pic !='' ) { %>
+            <div class="blog_picture">
+                <img src="<%= post.pic %>" alt="<%= post.incasenopic%>">
+            </div>
+            <% } %>
+
+
+            <div class="blog_text">
+                <p>
+                    <%= post.text%>
+                </p>
+            </div>
+            </a>
+            <script>
+                var clicked = false;
+                function plusLike() {
+                    if (!clicked) {
+                        console.log("Like button is pressed");
+                        clicked = true;
+                        alert("Something is done!");
+                    }
+
+
+                }
+            </script>
+            <button class="like" id="likeS" onclick="plusLike()">
+                <img src="/img/thumb-up.png" alt="like">
+            </button>
+            <span class="likes"> Likes: <%= post.likes %> </span>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
 </body>
+
 </html>
