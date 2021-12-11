@@ -70,7 +70,7 @@ app.post('/newpost', async (req, res) => {
             "INSERT INTO poststable( pic, text, timestamp) values ($1, $2, current_date) RETURNING*", [post.pic, post.text]
         );
         console.log(post)
-        /*res.json(newpost);*/
+        res.json(newpost)
     } catch (err) {
         console.error(err.message);
     }
@@ -78,3 +78,17 @@ app.post('/newpost', async (req, res) => {
 app.use((req, res) => {
     res.status(404).render('404');
 });
+
+app.put('/singlepost/:id/like', async(req, res) => {
+    try {
+    const { id } = req.params;
+    const post = req.body;
+    console.log("update request has arrived");
+    const updatepost = await pool.query(
+    "UPDATE poststable SET (likes) = ($4) WHERE id = $1", [id, post.likes+1]
+    );
+    res.json(post);
+    } catch (err) {
+    console.error(err.message);
+    }
+   });

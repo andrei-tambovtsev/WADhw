@@ -37,17 +37,32 @@
             </a>
             <script>
                 var clicked = false;
-                function plusLike() {
-                    if (!clicked) {
-                        console.log("Like button is pressed");
-                        clicked = true;
-                        alert("Something is done!");
-                    }
-
+                function likePlus() {
+                    var clicked = false;
+                if (!clicked) {
+                  console.log("tere");
+                  clicked = true;
+                  const updatereq = document.querySelector('button.like');
+                  const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
+                  console.log(updatereq.dataset.update)
+                  console.log("Tere2")
+                  fetch(endpoint, {
+                    method: 'PUT',
+                  })
 
                 }
+
+                /*console.log("tere")
+                const updatereq = document.querySelector('button.like');
+                updatereq.addEventListener('click', (e) => {
+                  console.log("tere")
+                  const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
+                  fetch(endpoint, {
+                    method: 'PUT',
+                  }).then(window.location.href = '/')*/
+            };
             </script>
-            <button class="like" id="likeS" onclick="plusLike()">
+            <button class="like" id="likeS" data-update="<%= post.id %>" onclick="likePlus()">
                 <img src="/img/thumb-up.png" alt="like">
             </button>
             <span class="likes"> Likes: <%= post.likes %> </span>
