@@ -69,33 +69,20 @@
     <%- include('./partials/footer.ejs') %>
       <script>
         function likePlus(neededid, likeNum) {
-          var clicked = false;
-          if (!clicked) {
-            const likeButtonId = "L" + neededid;
-            document.getElementById(likeButtonId).disabled = true;
-            const likesnumberid = "likesnumber" + neededid;
-            const newLikeNum = "Likes:" + (likeNum);
-            document.getElementById(likesnumberid).innerHTML = newLikeNum;
-            clicked = true;
-            const selector = 'button#L' + neededid;
-            const updatereq = document.querySelector(selector);
-            console.log(updatereq)
-            const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
-            console.log(endpoint)
-            fetch(endpoint, {
-              method: 'PUT'
-            })
-
-          }
-
-          /*console.log("tere")
-          const updatereq = document.querySelector('button.like');
-          updatereq.addEventListener('click', (e) => {
-            console.log("tere")
-            const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
-            fetch(endpoint, {
-              method: 'PUT',
-            }).then(window.location.href = '/')*/
+          const likeButtonId = "L" + neededid;
+          document.getElementById(likeButtonId).disabled = true;
+          const likesnumberid = "likesnumber" + neededid;
+          const newLikeNum = "Likes:" + (likeNum);
+          document.getElementById(likesnumberid).innerHTML = newLikeNum;
+          clicked = true;
+          const selector = 'button#L' + neededid;
+          const updatereq = document.querySelector(selector);
+          console.log(updatereq)
+          const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
+          console.log(endpoint)
+          fetch(endpoint, {
+            method: 'PUT'
+          })
         };
 
       </script>

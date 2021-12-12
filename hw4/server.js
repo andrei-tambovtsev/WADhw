@@ -110,10 +110,8 @@ app.put('/singlepost/:id/like', async (req, res) => {
         const updatepost = await pool.query(
             "UPDATE poststable SET (likes) = (SELECT(SELECT likes FROM poststable WHERE poststable.id = $1) + 1) WHERE poststable.id = $1", [id]
         );
-        const posts = await pool.query(
-            "SELECT * FROM poststable WHERE id = $1", [id]
-        );
-        res.render('./partials/footer', {layout: false});
+        
+        res.json(post);
         
     } catch (err) {
         console.error(err.message);

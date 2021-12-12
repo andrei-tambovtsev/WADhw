@@ -13,39 +13,40 @@
 
 <body>
     <%- include('./partials/header.ejs') %>
-    <div class="singlePageView">  
-        <div class="blog_post">
-            <div class="blog_info">
-                <img src="/img/account.png" alt="account">
-                <span>
-                    <%= post.timestamp.toDateString()%>
-                </span>
+        <div class="singlePageView">
+            <div class="blog_post">
+                <div class="blog_info">
+                    <img src="/img/account.png" alt="account">
+                    <span>
+                        <%= post.timestamp.toDateString()%>
+                    </span>
+                </div>
+
+                <% if (post.pic !='' ) { %>
+                    <div class="blog_picture">
+                        <img src="<%= post.pic %>" alt="<%= post.incasenopic%>">
+                    </div>
+                    <% } %>
+
+                        <div class="blog_text">
+                            <p>
+                                <%= post.text%>
+                            </p>
+                        </div>
+                        <button class="like" data-update="<%= post.id %>" id="likeS" onclick="likePlus()">
+                            <img src="/img/thumb-up.png" alt="like">
+                        </button>
+                        <span class="likes" id="numberLikes"> Likes:<%= post.likes %> </span>
+            </div>
+            <div>
+                <a class="delete" data-del="<%= post.id %>">
+                    <button class="deleteButton">
+                        <img src="/img/delete.png" alt="delete">
+                    </button>
+                </a>
             </div>
 
-            <% if (post.pic !='' ) { %>
-                <div class="blog_picture">
-                    <img src="<%= post.pic %>" alt="<%= post.incasenopic%>">
-                </div>
-                <% } %>
-
-                    <div class="blog_text">
-                        <p>
-                            <%= post.text%>
-                        </p>
-                    </div>
-                    <button class="like" id="likeS" onclick="likePlus()">
-                        <img src="/img/thumb-up.png" alt="like">
-                    </button>
-                    <span class="likes" id="numberLikes"> Likes:<%= post.likes %> </span>
         </div>
-        <div>
-            <a class="delete" data-del="<%= post.id %>">
-                <button class="deleteButton">
-                    <img src="/img/delete.png" alt="delete">
-                </button>
-        </a></div>
-
-    </div>  
         <script>
             const delreq = document.querySelector('a.delete');
             delreq.addEventListener('click', (e) => {
@@ -55,45 +56,21 @@
                 }).then(window.location.href = '/')
             });
 
-            
+
 
             function likePlus(neededid) {
-                document.getElementById("likeS").disabled = true;
-
                 document.getElementById("numberLikes").innerHTML = "Likes:<%= post.likes+1 %>";
                 const putreq = document.querySelector('button.like');
-                putreq.addEventListener('click', (e) => {
-                    const endpoint = `/singlepost/${putreq.dataset.liked}/like`;
-                    console.log(endpoint)
-                    fetch(endpoint, {
-                        method: 'PUT',
-                    })
+                console.log(putreq)
+                const endpoint = `/singlepost/${putreq.dataset.update}/like`;
+                console.log(endpoint)
+                fetch(endpoint, {
+                    method: 'PUT',                    
+                })
+                document.getElementById("likeS").disabled = true;
+            };
 
-                })};
 
-            /*
-            function likePlus() {
-                if (!clicked) {
-                    console.log("tere");
-                    clicked = true;
-                    const updatereq = document.querySelector('a.like');
-                    
-                    console.log(updatereq.dataset.liked)
-                    console.log(endpoint)
-                    fetch(endpoint, {
-                        method: 'PUT',
-                    });
-
-                };
- */
-            /*console.log("tere")
-            const updatereq = document.querySelector('button.like');
-            updatereq.addEventListener('click', (e) => {
-              console.log("tere")
-              const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
-              fetch(endpoint, {
-                method: 'PUT',
-              }).then(window.location.href = '/')*/
         </script>
 
         <%- include('./partials/footer.ejs') %>
