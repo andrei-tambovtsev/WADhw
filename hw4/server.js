@@ -10,7 +10,6 @@ app.use(bp.urlencoded({ extended: true }))
 app.set('view engine', 'ejs');
 
 app.listen(3000);                           /* http://localhost:3000/ */
-
 app.use(express.static('Public'));          //Это чтобы использовать static files (такие как цсс-файлы и картинки). Указываем папку Public, где наши статичные файлы и должен будет искать EXPRESS.
 
 /* app.get('/', (req, res) => {                
@@ -55,30 +54,26 @@ app.get('/singlepost/:id', async (req, res) => {
         const posts = await pool.query(
             "SELECT * FROM poststable WHERE id = $1", [id]
         );
-        console.log(posts);
         res.render('singlepost', { post: posts.rows[0] });
     } catch (err) {
         console.error(err.message);
     }
-    res.render('singlepost');
+
 });
 
-app.post('/newpost/:text', async (req, res) => {
+app.post('/newpost', async (req, res) => {
     try {
-        console.log("a post request has arrived");
-        const {url} = req.body;
-        console.log(url);
-        const {text} = req.params;
-        console.log(text);
+        const post = req.body;
+        console.log(post);
         const newpost = await pool.query(
-            "INSERT INTO poststable( pic, text, timestamp) values ($1, $2, NOW()::date) RETURNING*", [url, text]
+            "INSERT INTO poststable(pic, text, timestamp) values ($1, $2, NOW()::date) RETURNING*", [post.urllink, post.text]
         );
-        // console.log(post)
-        res.json(newpost);
+        res.redirect('/');
     } catch (err) {
-        console.error(err.message);
+        console.error(err.message)
     }
 });
+
 
 
 
@@ -91,27 +86,27 @@ app.delete('/posts/:id', async (req, res) => {
         );
 
         res.json(post);
-
+        res.redirect('/');
     } catch (err) {
         console.error(err.message);
     }
 });
 
 
+app.put('/singlepost/:id/like', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = req.body;
+        console.log("update request has arrived");
+        const updatepost = await pool.query(
+            "UPDATE poststable SET (likes) = (SELECT(SELECT likes FROM poststable WHERE poststable.id = $1) + 1) WHERE poststable.id = $1", [id]
+        );
+        res.json(post);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 app.use((req, res) => {
     res.status(404).render('404');
 });
-
-app.put('/singlepost/:id/like', async(req, res) => {
-    try {
-    const { id } = req.params;
-    const post = req.body;
-    console.log("update request has arrived");
-    const updatepost = await pool.query(
-    "UPDATE poststable SET (likes) = ($4) WHERE id = $1", [id, post.likes+1]
-    );
-    res.json(post);
-    } catch (err) {
-    console.error(err.message);
-    }
-   });

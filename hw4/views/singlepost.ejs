@@ -18,7 +18,7 @@
             <div class="blog_info">
                 <img src="/img/account.png" alt="account">
                 <span>
-                    <%= post.timestamp.toDateString()%>
+                    <!-- <%= post.timestamp.toDateString()%> -->
                 </span>
             </div>
 
@@ -51,47 +51,22 @@
                         <img src="/img/thumb-up.png" alt="like">
                     </button>
                     <span class="likes"> Likes: <%= post.likes %> </span>
-                    <a class="delete" data-del="<%= post.id %>">
-                        <button>Delete</button>
-                    </a> -->
+                     -->
 
                     <div class="blog_text">
                         <p>
                             <%= post.text%>
                         </p>
                     </div>
+                    <a class="like" data-liked="<%= post.id %>">
+                        <button class="like" id="likes" data-update="<%= post.id %>" onclick="likePlus()">
+                            <img src="/img/thumb-up.png" alt="like">
+                        </button>
                     </a>
-                    <script>
-                        var clicked = false;
-                        function likePlus() {
-                            var clicked = false;
-                            if (!clicked) {
-                                console.log("tere");
-                                clicked = true;
-                                const updatereq = document.querySelector('button.like');
-                                const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
-                                console.log(updatereq.dataset.update)
-                                console.log("Tere2")
-                                fetch(endpoint, {
-                                    method: 'PUT',
-                                })
-
-                            }
-
-                            /*console.log("tere")
-                            const updatereq = document.querySelector('button.like');
-                            updatereq.addEventListener('click', (e) => {
-                              console.log("tere")
-                              const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
-                              fetch(endpoint, {
-                                method: 'PUT',
-                              }).then(window.location.href = '/')*/
-                        };
-                    </script>
-                    <button class="like" id="likeS" data-update="<%= post.id %>" onclick="likePlus()">
-                        <img src="/img/thumb-up.png" alt="like">
-                    </button>
                     <span class="likes"> Likes: <%= post.likes %> </span>
+                    <a class="delete" data-del="<%= post.id %>">
+                        <button>Delete</button>
+                    </a>
         </div>
         <script>
             const delreq = document.querySelector('a.delete');
@@ -101,6 +76,31 @@
                     method: 'DELETE',
                 }).then(window.location.href = '/')
             });
+
+            var clicked = false;
+            function likePlus() {
+                if (!clicked) {
+                    console.log("tere");
+                    clicked = true;
+                    const updatereq = document.querySelector('a.like');
+                    const endpoint = `/singlepost/${updatereq.dataset.liked}/like`;
+                    console.log(updatereq.dataset.liked)
+                    console.log(endpoint)
+                    fetch(endpoint, {
+                        method: 'PUT',
+                    });
+
+                }
+
+                /*console.log("tere")
+                const updatereq = document.querySelector('button.like');
+                updatereq.addEventListener('click', (e) => {
+                  console.log("tere")
+                  const endpoint = `/singlepost/${updatereq.dataset.update}/like`;
+                  fetch(endpoint, {
+                    method: 'PUT',
+                  }).then(window.location.href = '/')*/
+            };
         </script>
 
         <%- include('./partials/footer.ejs') %>

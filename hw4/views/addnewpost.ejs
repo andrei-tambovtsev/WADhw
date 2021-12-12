@@ -21,42 +21,19 @@
       </div>
       <div class="login">
         <h2>Make a post:</h2>
-        <form>
-          <br><input type="url" id=urlInput name="picUrl" placeholder="Enter a link to picture"><br>
-          <br><input type="text" id=texrInput name="postText" placeholder="And Your post text"><br>
 
-        </form>
-        <a class="post">
-          <button>Post!</button>
-        </a>
-        <!-- <a href="https://www.yout-ube.com/watch?v=dQw4w9WgXcQ">The secret word has been forgotten?</a> -->
+        <div class="create-post">
+          <form action="/newpost" method="POST">
+            <label for="urllink"> URL link:</label>
+            <input type="text" id="urllink" name="urllink" required></textarea><br><br>
+            <label for="text">Post body:</label>
+            <input type="text" id="text" name="text" required><br><br>
+
+            <button>Submit</button>
+          </form>
+        </div>
       </div>
     </div>
-
-
-    <script>
-      const postreq = document.querySelector('a.post');
-      postreq.addEventListener('click', (e) => {
-        const data = {url: getUrl()};
-        const endpoint = `/newpost/${getText()}`;
-        fetch(endpoint, {
-          method: 'POST', body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(window.location.href = '/')
-      });
-      function getUrl() {
-        var picUrl = document.getElementById("urlInput").value;
-        return picUrl;
-      }
-
-      function getText() {
-        var postText = document.getElementById("texrInput").value;
-        return postText;
-      }
-    </script>
-
 
 
     <%- include('./partials/footer.ejs') %>
