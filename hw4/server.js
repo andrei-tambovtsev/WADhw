@@ -3,8 +3,10 @@ const app = express();
 const bp = require('body-parser')
 const pool = require('./database');
 const { route } = require('express/lib/application');
+const cors = require('cors');
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
+app.use(cors());
 
 // !!! register the ejs view engine
 app.set('view engine', 'ejs');
@@ -86,7 +88,7 @@ app.delete('/posts/:id', async (req, res) => {
         );
 
         res.json(post);
-        res.redirect('/');
+        
     } catch (err) {
         console.error(err.message);
     }
@@ -101,7 +103,11 @@ app.put('/singlepost/:id/like', async (req, res) => {
         const updatepost = await pool.query(
             "UPDATE poststable SET (likes) = (SELECT(SELECT likes FROM poststable WHERE poststable.id = $1) + 1) WHERE poststable.id = $1", [id]
         );
-        res.json(post);
+        const posts = await pool.query(
+            "SELECT * FROM poststable WHERE id = $1", [id]
+        );
+        res.render('singlepost', { post: posts.rows[0] });
+        
     } catch (err) {
         console.error(err.message);
     }

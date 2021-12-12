@@ -59,7 +59,7 @@
                         </p>
                     </div>
                     <a class="like" data-liked="<%= post.id %>">
-                        <button class="like" id="likes" data-update="<%= post.id %>" onclick="likePlus()">
+                        <button class="like" id="likes" data-update="<%= post.id %>">
                             <img src="/img/thumb-up.png" alt="like">
                         </button>
                     </a>
@@ -78,20 +78,32 @@
             });
 
             var clicked = false;
+            const putreq = document.querySelector('a.like');
+            putreq.addEventListener('click', (e) => {
+                if(!clicked){
+                    clicked = true;
+                const endpoint = `/singlepost/${putreq.dataset.liked}/like`;
+                console.log(endpoint)
+                fetch(endpoint, {
+                    method: 'PUT',
+                })
+            }});
+
+            /* 
             function likePlus() {
                 if (!clicked) {
                     console.log("tere");
                     clicked = true;
                     const updatereq = document.querySelector('a.like');
-                    const endpoint = `/singlepost/${updatereq.dataset.liked}/like`;
+                    
                     console.log(updatereq.dataset.liked)
                     console.log(endpoint)
                     fetch(endpoint, {
                         method: 'PUT',
                     });
 
-                }
-
+                };
+ */
                 /*console.log("tere")
                 const updatereq = document.querySelector('button.like');
                 updatereq.addEventListener('click', (e) => {
@@ -100,7 +112,6 @@
                   fetch(endpoint, {
                     method: 'PUT',
                   }).then(window.location.href = '/')*/
-            };
         </script>
 
         <%- include('./partials/footer.ejs') %>
