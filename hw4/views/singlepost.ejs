@@ -18,40 +18,52 @@
             <div class="blog_info">
                 <img src="/img/account.png" alt="account">
                 <span>
-                    <%= post.timeStamp %>
+                    <%= post.timestamp.toDateString()%>
                 </span>
             </div>
 
             <% if (post.pic !='' ) { %>
-            <div class="blog_picture">
-                <img src="<%= post.pic %>" alt="<%= post.incasenopic%>">
-            </div>
-            <% } %>
+                <div class="blog_picture">
+                    <img src="<%= post.pic %>" alt="<%= post.incasenopic%>">
+                </div>
+                <% } %>
 
 
-            <div class="blog_text">
-                <p>
-                    <%= post.text%>
-                </p>
-            </div>
-            </a>
-            <script>
-                var clicked = false;
-                function plusLike() {
-                    if (!clicked) {
-                        console.log("Like button is pressed");
-                        clicked = true;
-                        alert("Something is done!");
-                    }
+                    <div class="blog_text">
+                        <p>
+                            <%= post.text%>
+                        </p>
+                    </div>
+                    </a>
+                    <script>
+                        var clicked = false;
+                        function plusLike() {
+                            if (!clicked) {
+                                console.log("Like button is pressed");
+                                clicked = true;
+                                alert("Something is done!");
+                            }
 
 
-                }
-            </script>
-            <button class="like" id="likeS" onclick="plusLike()">
-                <img src="/img/thumb-up.png" alt="like">
-            </button>
-            <span class="likes"> Likes: <%= post.likes %> </span>
+                        }
+                    </script>
+                    <button class="like" id="likeS" onclick="plusLike()">
+                        <img src="/img/thumb-up.png" alt="like">
+                    </button>
+                    <span class="likes"> Likes: <%= post.likes %> </span>
+                    <a class="delete" data-del="<%= post.id %>">
+                        <button>Delete</button>
+                    </a>
         </div>
+        <script>
+            const delreq = document.querySelector('a.delete');
+            delreq.addEventListener('click', (e) => {
+                const endpoint = `/posts/${delreq.dataset.del}`;
+                fetch(endpoint, {
+                    method: 'DELETE',
+                }).then(window.location.href = '/')
+            });
+        </script>
 
         <%- include('./partials/footer.ejs') %>
 </body>

@@ -2,6 +2,7 @@ const express = require('express');         /* Express - это фреймвор
 const app = express();
 const bp = require('body-parser')
 const pool = require('./database');
+const { route } = require('express/lib/application');
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
@@ -55,26 +56,46 @@ app.get('/singlepost/:id', async (req, res) => {
             "SELECT * FROM poststable WHERE id = $1", [id]
         );
         console.log(posts);
-        res.render('singlepost', {post: posts.rows[0]});
+        res.render('singlepost', { post: posts.rows[0] });
     } catch (err) {
         console.error(err.message);
     }
     res.render('singlepost');
 });
 
-app.post('/newpost', async (req, res) => {
+app.post('/newpost/:text', async (req, res) => {
     try {
         console.log("a post request has arrived");
-        const post = req.body;
+        const {url} = req.body;
+        console.log(url);
+        const {text} = req.params;
+        console.log(text);
         const newpost = await pool.query(
-            "INSERT INTO poststable( pic, text, timestamp) values ($1, $2, current_date) RETURNING*", [post.pic, post.text]
+            "INSERT INTO poststable( pic, text, timestamp) values ($1, $2, NOW()::date) RETURNING*", [url, text]
         );
-        console.log(post)
-        /*res.json(newpost);*/
+        // console.log(post)
+        res.json(newpost);
     } catch (err) {
         console.error(err.message);
     }
 });
+
+
+
+app.delete('/posts/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = req.body;
+        console.log("delete a post request has arrived");
+        const deletepost = await pool.query("DELETE FROM poststable WHERE id = $1", [id]
+        );
+        res.json(post);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+
 app.use((req, res) => {
     res.status(404).render('404');
 });
