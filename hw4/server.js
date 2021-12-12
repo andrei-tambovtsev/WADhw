@@ -48,6 +48,8 @@ app.get('/', async (req, res) => {
 app.get('/addnewpost', (req, res) => {
     res.render('addnewpost');
 });
+
+
 app.get('/singlepost/:id', async (req, res) => {
 
     try {
@@ -56,7 +58,12 @@ app.get('/singlepost/:id', async (req, res) => {
         const posts = await pool.query(
             "SELECT * FROM poststable WHERE id = $1", [id]
         );
+        if(posts === undefined){
+            res.status(404).render('404');
+        }
+        else{
         res.render('singlepost', { post: posts.rows[0] });
+        }
     } catch (err) {
         console.error(err.message);
     }
@@ -106,7 +113,7 @@ app.put('/singlepost/:id/like', async (req, res) => {
         const posts = await pool.query(
             "SELECT * FROM poststable WHERE id = $1", [id]
         );
-        res.render('singlepost', { post: posts.rows[0] });
+        res.render('./partials/footer', {layout: false});
         
     } catch (err) {
         console.error(err.message);

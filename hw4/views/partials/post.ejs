@@ -1,0 +1,32 @@
+<div>
+    <a href="/singlepost/<%= posT.id %>">
+      <div class="blog_post">
+        <div class="blog_info">
+          <img src="/img/account.png" alt="account">
+          <span>
+            <%= posT.timestamp.toDateString() %>
+          </span>
+        </div>
+
+
+        <% if (posT.pic !='' ) { %>
+          <div class="blog_picture">
+            <img src="<%= posT.pic %>" alt="<%= posT.incasenopic %>">
+          </div>
+          <% } %>
+
+
+            <div class="blog_text">
+              <p>
+                <%= posT.text%>
+              </p>
+            </div>
+    </a>
+
+    <button class="like" id="L<%= posT.id %>" data-update="<%= posT.id %>"
+      onclick="likePlus(likedid = '<%= posT.id %>', likeNum ='<%= posT.likes+1%>' )">
+      <img src="/img/thumb-up.png" alt="like">
+    </button>
+    <span class="likes" id="likesnumber<%= posT.id %>"> Likes:<%= posT.likes %> </span>
+  </div>
+</div>
