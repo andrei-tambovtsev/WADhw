@@ -9,12 +9,10 @@ background-color: #494949;
 
 /*login.html*/
 div.main{
-  margin-top:5%;
-  margin-left: 33%;
-  padding: 0;
+  margin-left: 30%;
+  margin-top: 5%;
+  width: 40%;
   background-color: #FFCC00;
-  width: 33%;
-  height: 46%;
   box-shadow: 10px 10px 10px black;
   display: flex;
   flex-direction: column;
@@ -24,6 +22,23 @@ div.main{
 }
 div.main:hover{
   box-shadow: 15px 15px 15px black;
+}
+
+button.addButton {
+  margin-top: 5%;
+  background-color: #FFCC00;
+  width: 100px;
+}
+
+button.addButton img{
+  width: 100%;
+}
+
+div.inputDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 div.Welcome-banner{
@@ -49,8 +64,6 @@ h2{
   font-family: "Impact";
   font-size: 35px;
 }
-
-
 
 
 
@@ -273,6 +286,16 @@ div.searching_line{
     width: 50px;
   }
 
+  button.deleteButton{
+    background-color: #494949 ;
+    margin: 2%;
+    width: 100px;
+  }
+
+  button.deleteButton img {
+    width: 100%;
+  }
+
   button.like:hover  {
     background-color: #c59e00 ;
   }
@@ -320,4 +343,21 @@ div.searching_line{
     padding: 40px 0px 10px 0px;           /* Отступ от краёв коробки */
     font-style: italic;
     font-weight: 600;
+  }
+
+  div.singlePageView {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.singlePageView div.blog_post {
+    margin-left: 0%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 60%;
+    background-color: #FFCC00;
+    box-shadow: 10px 10px 30px black;
   }

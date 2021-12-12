@@ -24,12 +24,17 @@
 
         <div class="create-post">
           <form action="/newpost" method="POST">
-            <label for="urllink"> URL link:</label>
+            <div class="inputDiv">
+            <label for="urllink"> Post pict:</label>
             <input type="text" id="urllink" name="urllink" ></textarea><br><br>
-            <label for="text">Post body:</label>
+          </div>
+            <div class="inputDiv">
+            <label for="text">Post text:</label>
             <input type="text" id="text" name="text" required><br><br>
-
-            <button>Submit</button>
+          </div>
+            <button title="Make new post" class="addButton">
+              <img src="/img/add.png" alt="addPost">
+            </button>
           </form>
         </div>
       </div>

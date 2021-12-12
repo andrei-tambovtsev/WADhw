@@ -13,7 +13,7 @@
 
 <body>
     <%- include('./partials/header.ejs') %>
-
+    <div class="singlePageView">  
         <div class="blog_post">
             <div class="blog_info">
                 <img src="/img/account.png" alt="account">
@@ -37,15 +37,15 @@
                         <img src="/img/thumb-up.png" alt="like">
                     </button>
                     <span class="likes" id="numberLikes"> Likes:<%= post.likes %> </span>
-
-                    <a class="delete" data-del="<%= post.id %>">
-                        <button>Delete</button>
-                    </a>
-
-
-                    
-
         </div>
+        <div>
+            <a class="delete" data-del="<%= post.id %>">
+                <button class="deleteButton">
+                    <img src="/img/delete.png" alt="delete">
+                </button>
+        </a></div>
+
+    </div>  
         <script>
             const delreq = document.querySelector('a.delete');
             delreq.addEventListener('click', (e) => {
