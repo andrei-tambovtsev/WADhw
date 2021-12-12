@@ -89,7 +89,9 @@ app.delete('/posts/:id', async (req, res) => {
         console.log("delete a post request has arrived");
         const deletepost = await pool.query("DELETE FROM poststable WHERE id = $1", [id]
         );
+
         res.json(post);
+
     } catch (err) {
         console.error(err.message);
     }
@@ -99,3 +101,17 @@ app.delete('/posts/:id', async (req, res) => {
 app.use((req, res) => {
     res.status(404).render('404');
 });
+
+app.put('/singlepost/:id/like', async(req, res) => {
+    try {
+    const { id } = req.params;
+    const post = req.body;
+    console.log("update request has arrived");
+    const updatepost = await pool.query(
+    "UPDATE poststable SET (likes) = ($4) WHERE id = $1", [id, post.likes+1]
+    );
+    res.json(post);
+    } catch (err) {
+    console.error(err.message);
+    }
+   });
